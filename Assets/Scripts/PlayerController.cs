@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,9 +56,13 @@ public class PlayerController : MonoBehaviour
             SetCountText();
         }
 
+     }
+
+     private void OnCollisionEnter(Collision other){
         if (other.gameObject.CompareTag("Wall")) {
             AudioSource.PlayClipAtPoint(hitwall, transform.position);
         }
         
     }
-}
+}       
+ 
