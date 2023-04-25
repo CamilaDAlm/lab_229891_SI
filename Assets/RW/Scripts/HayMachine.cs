@@ -20,6 +20,11 @@ public class HayMachine : MonoBehaviour
 
     private void UpdateMovement()
     {
+        /*if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Instantiate(hayBalePrefab);
+        }*/
+
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
         if (horizontalInput < 0 && transform.position.x > -horizontalBoundary)
@@ -34,7 +39,8 @@ public class HayMachine : MonoBehaviour
     private void UpdateShooting() { 
         shootTimer -= Time.deltaTime; 
         if (shootTimer <= 0 && Input.GetKey(KeyCode.Space)) { 
-            shootTimer = shootInterval; ShootHay();
+            shootTimer = shootInterval; 
+            ShootHay();
         } 
     }
     private void ShootHay()
