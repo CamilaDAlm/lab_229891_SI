@@ -32,7 +32,25 @@ public class Sheep : MonoBehaviour
         sheepSpawner.RemoveSheepFromList(gameObject);
         hitByHay = true;
         runSpeed = 0;
+        SoundManager.Instance.PlaySheepHitClip();
+        if (gameObject.CompareTag("MagSheep"))
+        {
+            GameStateManager.Instance.MagSavedSheep();
+        }
+        else if (gameObject.CompareTag("CSheep"))
+        {
+            GameStateManager.Instance.CyanSavedSheep();
+        }
+        else if (gameObject.CompareTag("WSheep"))
+        {
+            GameStateManager.Instance.WoodHitSheep();
+        }
+        else
+        {
+            GameStateManager.Instance.SavedSheep();
+        }
         Destroy(gameObject, gotHayDestroyDelay);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,9 +67,18 @@ public class Sheep : MonoBehaviour
     private void Drop() // sheep falls 
     {
         sheepSpawner.RemoveSheepFromList(gameObject);
+        if (gameObject.CompareTag("MagSheep"))
+        {
+            GameStateManager.Instance.MagDroppedSheep();
+        }else if (gameObject.CompareTag("NormalSheep"))
+        {
+            GameStateManager.Instance.DroppedSheep();
+        }
         myRigidbody.isKinematic = false;
         myCollider.isTrigger = false;
         Destroy(gameObject, dropDestroyDelay);
+        SoundManager.Instance.PlaySheepDroppedClip();
+
     }
 
     public void SetSpawner(SheepSpawner spawner)//spawn sheeps

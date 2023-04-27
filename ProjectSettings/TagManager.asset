@@ -7,6 +7,10 @@ TagManager:
   - DestroyHay
   - DropSheep
   - Hay
+  - NormalSheep
+  - CSheep
+  - MagSheep
+  - WSheep
   layers:
   - Default
   - TransparentFX
